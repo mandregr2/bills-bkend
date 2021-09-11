@@ -21,3 +21,12 @@ con.connect((err) => {
 
 
 
+
+//Define uma rota
+app.get("/authors", (req, res) => {
+    return res.send("Rota para retornar os autores");
+    });
+    // Inicia o servidor na porta '3000'
+    app.listen(3000, () => {
+    console.log("Exemplo de aplicativo ouvindo a porta 3000");
+    });

@@ -3,8 +3,8 @@ module.exports = {
 
     async findAll(req, res) {
         try {
-            const recebers = await Receber.findAll();
-            return res.json(recebers);
+            const receber = await Receber.findAll();
+            return res.json(receber);
         } catch (err) {
             return res.status(400).json({ error: err.message });
         }

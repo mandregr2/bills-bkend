@@ -1,6 +1,7 @@
 const userController = require('../controllers/UserController');
 const AccessTokenController = require('./AccessTokenController');
 const db = require("../database/db");
+const jwt = require('jsonwebtoken');
 
 const login = (req, res) => {
 
@@ -11,12 +12,12 @@ const login = (req, res) => {
         return res.status(400).json({ error: err.message });
     } */
 
-
-    if (req.body.user === 'andre@andre' && req.body.password === '12345') {
-        //        const token = jwt.sign({ userId: 1 }, AccessToken.getToken(), { expiresIn: 300 });
-        return res.json({ auth: true, token });
+    
+    if (req.body.login === 'andre@andre' && req.body.password === '123456') {
+        const token = jwt.sign({ userId: 1 }, AccessTokenController.getSecret(), { expiresIn: 300 });
+        return res.json({ auth: true, token, success:true, url:'http://localhost:3030/users'});
     }
-    return res.status(401).end();
+    return res.status(400).json({ error: err.message });
 }
 
 /* const verifyJWT = (req, res, next) => {

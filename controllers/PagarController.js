@@ -4,8 +4,8 @@ module.exports = {
     
     async findAll(req, res) {
         try {
-            const pagars = await Pagar.findAll();
-            return res.json(pagars);
+            const pagar = await Pagar.findAll();
+            return res.json(pagar);
         } catch (err) {
             return res.status(400).json({ error: err.message });
         }
